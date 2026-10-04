@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+:root {
+  font-family: Inter, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  background: #020817;
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(6, 182, 212, 0.08), transparent 28%),
+    linear-gradient(180deg, #020817 0%, #040b17 50%, #020617 100%);
+  color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.bg-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 0%, rgba(0, 0, 0, 0.55) 45%, transparent 100%);
+}
+
+.pipeline-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.88));
+  box-shadow: inset 0 0 30px rgba(14, 116, 144, 0.15), 0 30px 80px rgba(2, 6, 23, 0.7);
+  padding: 1.5rem;
+}
+
+.pipeline-panel::before {
+  content: '';
+  position: absolute;
+  inset: -30% 10% auto auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.25), transparent 65%);
+  filter: blur(18px);
+}
+
+.pipeline-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(191 219 254);
+}
+
+.pipeline-arrow {
+  color: rgba(34, 211, 238, 0.9);
+}
+
+.terminal-line {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 0.95;
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.terminal-line::before {
+  content: '$';
+  color: #67e8f9;
+  margin-right: 0.5rem;
+}
+
+.pipeline-node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(125, 211, 252, 0.3);
+  background: rgba(14, 116, 144, 0.12);
+  border-radius: 9999px;
+  padding: 0.85rem 1.2rem;
+  min-width: 112px;
+  box-shadow: inset 0 0 18px rgba(34, 211, 238, 0.08);
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .pipeline-row {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .pipeline-node {
+    min-width: 100px;
+    padding: 0.75rem 0.9rem;
+  }
+}
